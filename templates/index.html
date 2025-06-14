@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Steganography Tool</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🕵️ Steganography Tool</h1>
+
+    <h2>Encode Message</h2>
+    <form action="/encode" method="post" enctype="multipart/form-data">
+      <label>Select PNG image:</label>
+      <input type="file" name="image" accept=".png" required>
+      <label>Enter secret message:</label>
+      <textarea name="message" rows="4" required></textarea>
+      <button type="submit">Encode and Download</button>
+    </form>
+
+    <hr>
+
+    <h2>Decode Message</h2>
+    <form action="/decode" method="post" enctype="multipart/form-data">
+      <label>Select stego image:</label>
+      <input type="file" name="stego_image" accept=".png" required>
+      <button type="submit">Decode Message</button>
+    </form>
+
+    {% if decoded_message %}
+      <div class="output">
+        <h3>🔍 Decoded Message:</h3>
+        <p>{{ decoded_message }}</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
