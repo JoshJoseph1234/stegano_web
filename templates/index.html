@@ -13,8 +13,9 @@
     <form action="/encode" method="post" enctype="multipart/form-data">
       <label>Select PNG image:</label>
       <input type="file" name="image" accept=".png" required>
-      <label>Enter secret message:</label>
-      <textarea name="message" rows="4" required></textarea>
+     <label>Enter URL to hide:</label>
+<input type="url" name="message" placeholder="https://example.com" required>
+
       <button type="submit">Encode and Download</button>
     </form>
 
@@ -27,12 +28,18 @@
       <button type="submit">Decode Message</button>
     </form>
 
-    {% if decoded_message %}
-      <div class="output">
-        <h3>🔍 Decoded Message:</h3>
-        <p>{{ decoded_message }}</p>
-      </div>
+   {% if decoded_message %}
+  <div class="output">
+    <h3>🔍 Decoded Message:</h3>
+    {% if decoded_message.startswith("http") %}
+      <p>This appears to be a link:</p>
+      <a href="{{ decoded_message }}" target="_blank" class="visit-link">{{ decoded_message }}</a>
+    {% else %}
+      <p>{{ decoded_message }}</p>
     {% endif %}
+  </div>
+{% endif %}
+
   </div>
 </body>
 </html>
