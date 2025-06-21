@@ -13,6 +13,12 @@
 </head>
 
 <body>
+  <video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='hacker-bg.mp4') }}" type="video/mp4">
+  </video>
+
+  <div class="overlay">
+
   <div class="container">
     <h1>🕵️ Steganography Tool</h1>
 
@@ -47,6 +53,7 @@
   </div>
 {% endif %}
 
+  </div>
   </div>
 </body>
 </html>

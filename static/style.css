@@ -77,3 +77,22 @@ a.visit-link:hover {
   color: #00ffff;
   text-shadow: 0 0 5px #00ffff;
 }
+/* Background video */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -1;
+  object-fit: cover;
+}
+
+/* Overlay to darken background for better readability */
+.overlay {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.75); /* semi-transparent black overlay */
+  min-height: 100vh;
+  padding: 40px;
+}
